@@ -36,11 +36,11 @@ export default {
       const { admin } = jwt.verify(token, 'tokenSig');
       const adminIsAuthorized = await Admin.findOne(admin).exec();
       if (adminIsAuthorized) {
-        const program = await Program.create(input);
-        if (program) {
+        try {
+          const program = await Program.create(input);
           return program;
-        } else {
-          throw new Error('There was a problem creating Program.');
+        } catch (e) {
+          throw new Error('There was a problem creating Program');
         }
       } else {
         throw new Error(
@@ -52,15 +52,14 @@ export default {
       const { admin } = jwt.verify(token, 'tokenSig');
       const adminIsAuthorized = await Admin.findOne(admin).exec();
       if (adminIsAuthorized) {
-        let program;
         const { id, ...rest } = input;
         try {
-          program = await Program.findByIdAndUpdate(id, rest, {
+          const program = await Program.findByIdAndUpdate(id, rest, {
             new: true
           }).exec();
           return program;
         } catch (e) {
-          throw new Error('There was a problem updating Program.');
+          throw new Error('There was a problem updating Program');
         }
       } else {
         throw new Error(
@@ -72,9 +71,8 @@ export default {
       const { admin } = jwt.verify(token, 'tokenSig');
       const adminIsAuthorized = await Admin.findOne(admin).exec();
       if (adminIsAuthorized) {
-        let program;
         try {
-          program = await Program.findByIdAndRemove(id).exec();
+          const program = await Program.findByIdAndRemove(id).exec();
           return program;
         } catch (e) {
           throw new Error('There was a problem deleting Program.');
