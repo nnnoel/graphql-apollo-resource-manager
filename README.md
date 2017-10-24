@@ -22,7 +22,7 @@ Tech Features:
 App features:
 -
 - Pagination using Apollo + Graphql queries
-- An admin dashboard that provides accesibility to live programs
+- An admin dashboard with accessibility to live programs
 - Admin login portal
 - Guests can manually search and filter programs
 - Guests can submit their programs to be listed (feature)
