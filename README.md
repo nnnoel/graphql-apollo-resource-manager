@@ -22,11 +22,11 @@ Tech Features:
 App features:
 -
 - Pagination using Apollo + Graphql queries
-- Admins can login through a portal
+- An admin dashboard that provides accesibility to live programs
+- Admin login portal
 - Guests can manually search and filter programs
 - Guests can submit their programs to be listed (feature)
-- Admin dashboard that provides accesibility to live programs
-- Authenticated can perform CRUD operations for programs in admin portal as well as approve and disapprove of submitted/pending programs
+- Admins can perform authenticated CRUD operations in dashboard as well as approve and disapprove of submitted/pending programs
 
 This is purely for demonstration purposes
 
