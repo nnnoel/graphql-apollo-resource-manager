@@ -1,0 +1,23 @@
+type Admin {
+  id: ID!
+  username: String!
+  password: String!
+}
+
+type AdminPayload {
+  token: String
+  isAuthenticated: Boolean
+}
+
+type Query {
+  admins: [Admin!]!
+  admin(id: ID!): Admin!
+  verifyAuthToken(token: String): AdminPayload!
+}
+
+type Mutation {
+  createAdmin(username: String!, password: String!): Admin
+  updateAdmin(id: ID!, username: String, password: String): Admin
+  deleteAdmin(id: ID!): Admin
+  signInAdmin(username: String!, password: String!): AdminPayload
+}

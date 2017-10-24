@@ -1,0 +1,111 @@
+scalar Datetime
+
+type Program {
+  id: ID!
+  name: String!
+  description: String!
+  website: String
+  cost: String
+  contactName: String!
+  email: String!
+  phoneNumber: String
+  size: String
+  location: String
+  county: String
+  ageRange: String
+  affiliations: String
+  timeOfDay: String
+  timeLength: String
+  certification: String
+  partners: String
+  scholarships: String
+  takesPlace: String
+  measuredSuccess: String
+  pastSuccess: String
+  pending: Boolean
+  createdAt: Datetime!
+}
+
+input CreateProgramInput {
+  name: String!
+  description: String!
+  website: String
+  cost: String
+  contactName: String!
+  email: String!
+  phoneNumber: String
+  size: String
+  location: String
+  county: String
+  ageRange: String
+  affiliations: String
+  timeOfDay: String
+  timeLength: String
+  certification: String
+  partners: String
+  scholarships: String
+  takesPlace: String
+  measuredSuccess: String
+  pastSuccess: String
+  pending: Boolean
+}
+
+input UpdateProgramInput {
+  id: ID!
+  name: String
+  description: String
+  website: String
+  cost: String
+  contactName: String
+  email: String
+  phoneNumber: String
+  size: String
+  location: String
+  county: String
+  ageRange: String
+  affiliations: String
+  timeOfDay: String
+  timeLength: String
+  certification: String
+  partners: String
+  scholarships: String
+  takesPlace: String
+  measuredSuccess: String
+  pastSuccess: String
+  pending: Boolean
+}
+
+input GetProgramsInput {
+  searchText: String
+  filters: Filters
+}
+
+input Filters {
+  takesPlace: String
+  timeOfDay: String
+  timeLength: String
+  cost: String
+  ageRange: String
+  pending: Boolean
+}
+
+type Meta {
+  totalCount: Int!
+}
+
+type Query {
+  test: String!
+  programs(
+    input: GetProgramsInput = {}
+    first: Int! = 10
+    skip: Int! = 0
+  ): [Program]
+  program(id: ID!): Program
+  _programsMeta(input: GetProgramsInput): Meta!
+}
+
+type Mutation {
+  createProgram(input: CreateProgramInput = {}): Program
+  updateProgram(input: UpdateProgramInput = {}): Program
+  deleteProgram(id: ID!): Program
+}
