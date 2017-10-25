@@ -5,11 +5,12 @@
 This is a demoable full-stack React + Graphql + Apollo webapp.
 
 Live: https://resource-manager-app-aussmfifmq.now.sh
+>The server tends to sleep after extended periods of inactivity. Give it a minute or two prior to a delay.
 
 The purpose of this app is to provide a local hub of queryable community ran programs that are maintained by service administrators.
 This is essentially a subset of an older [project](https://github.com/nnnoel/bounty_for_studyedge) with a focus on learning Graphql + Apollo.
 
-Uses a number of redux related libs for persisting state, [async store](https://medium.com/@machadogj/async-action-creators-with-redux-thunk-83af81994250), apollo mutation lifecycle hooks, and [react-redux-form](https://github.com/davidkpiano/react-redux-form). Greatly influenced by https://github.com/Carlows/alt-market.
+Uses a number of redux related libs for persisting state, [async store](https://medium.com/@machadogj/async-action-creators-with-redux-thunk-83af81994250), thunk for apollo mutation lifecycle hooks, and [react-redux-form](https://github.com/davidkpiano/react-redux-form). Greatly influenced by https://github.com/Carlows/alt-market.
 
 Tech Features:
 -
@@ -18,6 +19,7 @@ Tech Features:
 - Redux thunk for apollo mutation lifecycle hooks (Apollo does not provide network statuses for mutations, unlike queries)
 - Express server for GraphQL & Mongoose schemas
 - Persisted data using a live MongoDB instance hosted by [mLab](https://mlab.com/welcome/)
+- [Grommet](https://github.com/grommet/grommet) for UI components
 
 App features:
 -
