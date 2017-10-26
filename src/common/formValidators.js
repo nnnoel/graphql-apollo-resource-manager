@@ -6,7 +6,7 @@ export const email = value =>
 export const minLength = min => value => value && value.length >= min;
 
 export const url = value =>
-  /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/i.test(
+  /^((https?):\/\/)?(www.)?[a-z0-9]+\.[a-z]{2,4}(\/[a-zA-Z0-9#]+\/?)*$/i.test(
     value
   );
 
