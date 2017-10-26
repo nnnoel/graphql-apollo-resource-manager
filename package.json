@@ -29,6 +29,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "3.1.0",
     "react-redux-form": "1.15.0"
   }
 }
