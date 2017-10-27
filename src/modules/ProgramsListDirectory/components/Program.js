@@ -7,7 +7,7 @@ import Button from 'grommet/components/Button';
 import Heading from 'grommet/components/Heading';
 import Animate from 'grommet/components/Animate';
 
-import InfoLine from './InfoLine';
+import InfoLine from '../views/InfoLine';
 
 const selectedOptions = {
   online: 'Online',
