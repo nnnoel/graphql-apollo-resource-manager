@@ -86,6 +86,7 @@ class ProgramsListDirectory extends Component {
         >
           <ResourcesIcon size="medium" />
           <Search
+            id="programs-search-bar"
             style={{ fontSize: '1.5em' }}
             inline={true}
             responsive={false}
@@ -176,18 +177,23 @@ class ProgramsListDirectory extends Component {
             </Box>
           </Box>
         </Section>
-        <Section pad="medium" margin="small" flex={false}>
+        <Section
+          id="program-list-section"
+          pad="medium"
+          margin="small"
+          flex={false}
+        >
           {this.props.isFetching ||
           this.props.isSettingVariables ||
           this.props.isRefetching ? (
             <Loading />
           ) : this.props.programs && this.props.programs.length ? (
             <Box>
-              <Paragraph margin="small">
+              <Paragraph id="program-list-count" margin="small">
                 Showing {this.props.programs.length} out of{' '}
                 {this.props.totalCount} programs
               </Paragraph>
-              <List>
+              <List id="program-list">
                 {this.props.programs.map(({ ...program }, index) => (
                   <Program
                     index={index}
@@ -252,7 +258,7 @@ class ProgramsListDirectory extends Component {
   }
 }
 
-const getProgramsQuery = gql`
+export const getProgramsQuery = gql`
   query GetPrograms($input: GetProgramsInput, $first: Int!, $skip: Int!) {
     programs(input: $input, first: $first, skip: $skip) {
       id

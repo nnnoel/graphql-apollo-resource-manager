@@ -5,7 +5,7 @@ import Article from 'grommet/components/Article';
 import Status from 'grommet/components/icons/Status';
 
 export default ({ message, onClick }) => (
-  <Article pad="none" full="vertical" direction="column">
+  <Article id="error-display" pad="none" full="vertical" direction="column">
     <Box
       flex={true}
       full={false}

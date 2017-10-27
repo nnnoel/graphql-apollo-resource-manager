@@ -18,6 +18,7 @@ class SelectDrop extends Component {
     return (
       <Select
         {...rest}
+        className="program-select-dropdown"
         placeHolder={placeHolder}
         inline={false}
         options={options}

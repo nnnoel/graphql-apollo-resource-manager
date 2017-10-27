@@ -32,7 +32,7 @@ class Program extends Component {
 
   render() {
     return (
-      <Box colorIndex="light-1">
+      <Box className="program-list--item" colorIndex="light-1">
         <Box margin={{ vertical: 'medium' }} direction="row">
           <Box separator="right" colorIndex="light-2" pad="medium" basis="1/2">
             {/* left */}
