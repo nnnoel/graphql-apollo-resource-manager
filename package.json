@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "enzyme": "3.1.0",
+    "enzyme-adapter-react-16": "1.0.2",
     "react-redux-form": "1.15.0"
   }
 }
