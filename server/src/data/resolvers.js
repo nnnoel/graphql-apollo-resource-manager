@@ -49,8 +49,22 @@ export default {
       }
     },
     updateProgram: async (_, { input }, { token }) => {
-      const { admin } = jwt.verify(token, 'tokenSig');
-      const adminIsAuthorized = await Admin.findOne(admin).exec();
+      let admin;
+      try {
+        const payload = jwt.verify(token, 'tokenSig');
+        admin = payload.admin;
+      } catch (e) {
+        console.log({ name: e.name, message: e.message });
+        throw e;
+      }
+      let adminIsAuthorized;
+      try {
+        const { _id: id } = admin;
+        adminIsAuthorized = await Admin.findById(id).exec();
+      } catch (e) {
+        adminIsAuthorized = null;
+      }
+
       if (adminIsAuthorized) {
         const { id, ...rest } = input;
         try {
