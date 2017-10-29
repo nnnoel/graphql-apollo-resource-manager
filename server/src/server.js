@@ -19,7 +19,12 @@ const graphqlOptions = req => {
     schema,
     context: {
       token
-    }
+    },
+    formatError: ({ name, message, originalError }) => ({
+      name,
+      message,
+      originalError
+    })
   };
 };
 

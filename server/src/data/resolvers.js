@@ -33,8 +33,21 @@ export default {
   },
   Mutation: {
     createProgram: async (_, { input }, { token }) => {
-      const { admin } = jwt.verify(token, 'tokenSig');
-      const adminIsAuthorized = await Admin.findOne(admin).exec();
+      let admin;
+      try {
+        const payload = jwt.verify(token, 'tokenSig');
+        admin = payload.admin;
+      } catch (e) {
+        throw e;
+      }
+      let adminIsAuthorized;
+      try {
+        const { _id: id } = admin;
+        adminIsAuthorized = await Admin.findById(id).exec();
+      } catch (e) {
+        adminIsAuthorized = null;
+      }
+
       if (adminIsAuthorized) {
         try {
           const program = await Program.create(input);
@@ -43,9 +56,7 @@ export default {
           throw new Error('There was a problem creating Program');
         }
       } else {
-        throw new Error(
-          'Unauthorized action. Token is either invalid or expired.'
-        );
+        throw new Error('Unauthorized action.');
       }
     },
     updateProgram: async (_, { input }, { token }) => {
@@ -54,7 +65,6 @@ export default {
         const payload = jwt.verify(token, 'tokenSig');
         admin = payload.admin;
       } catch (e) {
-        console.log({ name: e.name, message: e.message });
         throw e;
       }
       let adminIsAuthorized;
@@ -76,25 +86,35 @@ export default {
           throw new Error('There was a problem updating Program');
         }
       } else {
-        throw new Error(
-          'Unauthorized action. Token is either invalid or expired.'
-        );
+        throw new Error('Unauthorized action.');
       }
     },
     deleteProgram: async (_, { id }, { token }) => {
-      const { admin } = jwt.verify(token, 'tokenSig');
-      const adminIsAuthorized = await Admin.findOne(admin).exec();
+      let admin;
+      try {
+        const payload = jwt.verify(token, 'tokenSig');
+        admin = payload.admin;
+      } catch (e) {
+        throw e;
+      }
+      let adminIsAuthorized;
+      try {
+        const { _id: id } = admin;
+        adminIsAuthorized = await Admin.findById(id).exec();
+      } catch (e) {
+        adminIsAuthorized = null;
+      }
+
       if (adminIsAuthorized) {
+        const { id, ...rest } = input;
         try {
           const program = await Program.findByIdAndRemove(id).exec();
           return program;
         } catch (e) {
-          throw new Error('There was a problem deleting Program.');
+          throw new Error('There was a problem deleting Program');
         }
       } else {
-        throw new Error(
-          'Unauthorized action. Token is either invalid or expired.'
-        );
+        throw new Error('Unauthorized action.');
       }
     },
     signInAdmin: async (_, { username, password }) => {
