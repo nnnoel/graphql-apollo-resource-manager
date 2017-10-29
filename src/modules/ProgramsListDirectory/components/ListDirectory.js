@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import compactObject from '../../../common/utilities/compactObject';
 import Loading from '../../../common/components/Loading';
 import Error from '../../../common/components/Error';

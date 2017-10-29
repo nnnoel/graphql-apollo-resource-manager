@@ -1,5 +1,3 @@
-import { enableInitializing } from 'initializable-reducer';
-
 const initialState = {
   started: false,
   succeeded: false,
@@ -7,30 +5,30 @@ const initialState = {
   ended: false
 };
 
-function deleteProgram(state = initialState, { type }) {
+function createProgram(state = initialState, { type }) {
   switch (type) {
-    case 'DELETE_PROGRAM_STARTED':
+    case 'CREATE_PROGRAM_STARTED':
       return {
         started: true,
         succeeded: false,
         errored: false,
         ended: false
       };
-    case 'DELETE_PROGRAM_SUCCESS':
+    case 'CREATE_PROGRAM_SUCCESS':
       return {
         started: false,
         succeeded: true,
         errored: false,
         ended: false
       };
-    case 'DELETE_PROGRAM_ERROR':
+    case 'CREATE_PROGRAM_ERROR':
       return {
         started: false,
         succeeded: false,
         errored: true,
         ended: false
       };
-    case 'DELETE_PROGRAM_ENDED':
+    case 'CREATE_PROGRAM_ENDED':
       return {
         started: false,
         succeeded: false,
@@ -42,6 +40,4 @@ function deleteProgram(state = initialState, { type }) {
   }
 }
 
-export { deleteProgram };
-
-export default enableInitializing(deleteProgram);
+export default createProgram;

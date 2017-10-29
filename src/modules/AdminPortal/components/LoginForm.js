@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { graphql, gql, compose } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
+import gql from 'graphql-tag';
 import { LocalForm } from 'react-redux-form';
 import TextInput from '../../../common/components/TextInput';
 import { required, minLength } from '../../../common/formValidators';

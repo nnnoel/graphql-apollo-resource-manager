@@ -1,5 +1,3 @@
-import { enableInitializing } from 'initializable-reducer';
-
 const initialState = {
   started: false,
   succeeded: false,
@@ -42,6 +40,4 @@ function updateProgram(state = initialState, { type }) {
   }
 }
 
-export { updateProgram };
-
-export default enableInitializing(updateProgram);
+export default updateProgram;

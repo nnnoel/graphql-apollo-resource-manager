@@ -1,13 +1,11 @@
+import { routerReducer as router } from 'react-router-redux';
 import admin from './admin';
-import createProgram from './createProgram';
-import updateProgram from './updateProgram';
-import deleteProgram from './deleteProgram';
+import programs from './programs';
 
 const reducers = {
+  router,
   admin,
-  createProgram,
-  updateProgram,
-  deleteProgram
+  programs
 };
 
 export default reducers;

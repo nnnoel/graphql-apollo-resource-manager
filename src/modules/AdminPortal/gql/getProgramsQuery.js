@@ -1,4 +1,4 @@
-import { gql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 export const getProgramsQuery = gql`
   query GetPrograms($input: GetProgramsInput, $first: Int!, $skip: Int!) {
