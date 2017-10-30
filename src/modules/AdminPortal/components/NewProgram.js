@@ -6,8 +6,7 @@ import ProgramForm from '../../../common/components/ProgramForm';
 import { createProgram } from '../actions';
 import { getProgramsQuery, createProgramMutation } from '../gql';
 
-import Article from 'grommet/components/Article';
-import Section from 'grommet/components/Section';
+import Box from 'grommet/components/Box';
 import Paragraph from 'grommet/components/Paragraph';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
@@ -24,7 +23,7 @@ class NewProgram extends Component {
 
   render() {
     return (
-      <Article pad="none" primary={true} full="vertical">
+      <Box tag="article" pad="none" primary={true} full="vertical">
         <Header size="large" pad={{ horizontal: 'medium' }}>
           <Title responsive={false}>
             <Anchor icon={<MenuIcon />} onClick={this.props.toggleNavMenu} />
@@ -32,7 +31,8 @@ class NewProgram extends Component {
           </Title>
         </Header>
 
-        <Section
+        <Box
+          tag="section"
           align="center"
           pad={{ horizontal: 'medium', between: 'small' }}
           flex={true}
@@ -42,7 +42,7 @@ class NewProgram extends Component {
             onFormSubmit={this.props.createProgram}
             disabled={this.props.createStarted}
           />
-        </Section>
+        </Box>
 
         <Footer
           pad={{
@@ -54,7 +54,7 @@ class NewProgram extends Component {
         >
           <Paragraph margin="none">© 2017 Noel Colon</Paragraph>
         </Footer>
-      </Article>
+      </Box>
     );
   }
 }

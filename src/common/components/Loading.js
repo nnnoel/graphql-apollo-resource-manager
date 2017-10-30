@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from 'grommet/components/Box';
-import Article from 'grommet/components/Article';
 import Spinning from 'grommet/components/icons/Spinning';
 
 export default () => (
