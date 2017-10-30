@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import { string, object, bool, objectOf } from 'prop-types';
+import { graphql, compose } from 'react-apollo';
+import { connect } from 'react-redux';
 import compactObject from '../../../common/utilities/compactObject';
 import Loading from '../../../common/components/Loading';
 import Error from '../../../common/components/Error';
@@ -21,6 +23,108 @@ import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
 import Spinning from 'grommet/components/icons/Spinning';
 import Button from 'grommet/components/Button';
+
+// toaster
+import { capitalize } from 'lodash';
+import Toast from 'grommet/components/Toast';
+
+class Toaster extends Component {
+  state = {
+    created: null,
+    updated: null,
+    deleted: null
+  };
+
+  static propTypes = {
+    subject: string.isRequired,
+    create: objectOf(bool),
+    update: objectOf(bool),
+    delete: objectOf(bool)
+  };
+
+  componentWillReceiveProps(nextProps) {
+    // XXX not entirely proud of this, but it'll work for now
+    if (this.props.create.ended === false && nextProps.create.ended) {
+      if (this.props.create.succeeded) {
+        this.setState({
+          created: (
+            <Toast status="ok" onClose={() => this.setState({ created: null })}>
+              Program was successfully created
+            </Toast>
+          )
+        });
+      } else if (this.props.create.errored) {
+        this.setState({
+          created: (
+            <Toast
+              status="critical"
+              onClose={() => this.setState({ created: null })}
+            >
+              Error occurred creating program
+            </Toast>
+          )
+        });
+      }
+    }
+
+    if (this.props.update.ended === false && nextProps.update.ended) {
+      if (this.props.update.succeeded) {
+        this.setState({
+          updated: (
+            <Toast status="ok" onClose={() => this.setState({ updated: null })}>
+              Program was successfully updated
+            </Toast>
+          )
+        });
+      } else if (this.props.update.errored) {
+        this.setState({
+          updated: (
+            <Toast
+              status="critical"
+              onClose={() => this.setState({ updated: null })}
+            >
+              Error occurred updating program
+            </Toast>
+          )
+        });
+      }
+    }
+
+    if (this.props.delete.ended === false && nextProps.delete.ended) {
+      if (this.props.delete.succeeded) {
+        this.setState({
+          deleted: (
+            <Toast status="ok" onClose={() => this.setState({ deleted: null })}>
+              Program was successfully deleted
+            </Toast>
+          )
+        });
+      } else if (this.props.delete.errored) {
+        this.setState({
+          deleted: (
+            <Toast
+              status="critical"
+              onClose={() => this.setState({ deleted: null })}
+            >
+              Error occurred deleting program
+            </Toast>
+          )
+        });
+      }
+    }
+  }
+
+  render() {
+    const { create, update, delete: del } = this.props;
+    return (
+      <div>
+        {create.ended && this.state.created}
+        {update.ended && this.state.updated}
+        {del.ended && this.state.deleted}
+      </div>
+    );
+  }
+}
 
 const ProgramListItem = ({ index, id, match, ...props }) => {
   return (
@@ -75,6 +179,7 @@ class ProgramsList extends Component {
   render() {
     return (
       <Article pad="none" primary={true} full="vertical">
+        <Toaster subject="program" {...this.props.programsState} />
         <Header size="large" pad={{ horizontal: 'medium' }}>
           <Title responsive={false}>
             <Anchor icon={<MenuIcon />} onClick={this.props.toggleNavMenu} />
@@ -225,4 +330,14 @@ const getProgramsQueryConfig = {
   props: mapResultsToProps
 };
 
-export default graphql(getProgramsQuery, getProgramsQueryConfig)(ProgramsList);
+//
+//  Map programs mutation states to props
+// ---------------------------------------
+const mapStateToProps = ({ programs: programsState }) => {
+  return { programsState };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  graphql(getProgramsQuery, getProgramsQueryConfig)
+)(ProgramsList);
