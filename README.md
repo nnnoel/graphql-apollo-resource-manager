@@ -36,8 +36,7 @@ App features:
 - An admin dashboard with accessibility to live programs
 - Admins can perform authenticated CRUD operations in dashboard as well as approve and disapprove submitted/pending programs
 - Public list directory for guest to search for a filter current programs
-- Guests can submit their programs to be listed
- and disapprove of submitted/pending programs [WIP]
+- Guests can submit their programs to be listed [WIP]
 
 This is purely for demonstration purposes
 
