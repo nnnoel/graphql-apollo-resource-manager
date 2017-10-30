@@ -7,7 +7,7 @@ import ApolloClient from 'apollo-client';
 import { mockNetworkInterface } from 'react-apollo/test-utils';
 import { setupStore } from '../store';
 import { AdminRoute, GuestRoute } from '../routes';
-
+// FIXME since redux-persist v4 migration
 describe('Routes', () => {
   const node = document.createElement('div');
   const client = new ApolloClient({

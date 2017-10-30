@@ -10,6 +10,7 @@ import ListDirectory, { getProgramsQuery } from '../components/ListDirectory';
 import { generateRandomMockData } from '../__mocks__/data';
 
 // TODO: Test search, filters, and lazy loading
+// FIXME since migrating apollo to 2.0
 
 const setupMockInterface = (mocks, { component: Component }) => {
   const networkInterface = mockNetworkInterface(...mocks);
