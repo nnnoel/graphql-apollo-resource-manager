@@ -38,6 +38,7 @@
     "enzyme": "3.1.0",
     "enzyme-adapter-react-16": "1.0.2",
     "enzyme-wait": "1.0.9",
+    "prop-types": "15.6.0",
     "react-redux-form": "1.15.0"
   }
 }
