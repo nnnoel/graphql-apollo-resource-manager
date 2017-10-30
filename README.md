@@ -27,7 +27,7 @@ Tech Features:
 - Persisted data using a live MongoDB instance hosted by [mLab](https://mlab.com/welcome/)
 - [Grommet](https://github.com/grommet/grommet) 1.8 for UI components
 - Enzyme 3
-> bootstraped using create-react-app (1.4.1)
+> bootstrapped using create-react-app (1.4.1)
 
 App features:
 -
