@@ -4,15 +4,16 @@ import Article from 'grommet/components/Article';
 import Spinning from 'grommet/components/icons/Spinning';
 
 export default () => (
-  <Article id="loading-spinner" pad="none" full="vertical" direction="column">
-    <Box
-      flex={true}
-      full={false}
-      margin="small"
-      align="center"
-      justify="center"
-    >
-      <Spinning size="medium" />
-    </Box>
-  </Article>
+  <Box
+    tag="article"
+    id="loading-spinner"
+    margin="small"
+    pad="none"
+    full="vertical"
+    direction="column"
+    justify="center"
+    align="center"
+  >
+    <Spinning size="large" />
+  </Box>
 );

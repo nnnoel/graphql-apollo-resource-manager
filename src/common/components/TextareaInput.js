@@ -22,7 +22,7 @@ class TextareaInput extends PureComponent {
             {...rest}
             style={{ resize: 'none' }}
             cols="30"
-            rows="4"
+            rows="5"
             model={model}
             id={id}
             validators={validators}

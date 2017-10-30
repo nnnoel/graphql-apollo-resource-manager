@@ -62,7 +62,7 @@ class ProgramForm extends Component {
               }}
               disabled={this.props.disabled}
             />
-
+            <Box flex={true} />
             <SelectInput
               id="cost"
               label="Cost"

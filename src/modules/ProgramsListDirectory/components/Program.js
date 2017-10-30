@@ -150,7 +150,7 @@ class Program extends Component {
                 <Paragraph margin="none">{this.props.pastSuccess}</Paragraph>
               </InfoLine>
             </Animate>
-
+            <Box flex={true} />
             <Box direction="row" alignSelf="end" margin={{ vertical: 'small' }}>
               <Button
                 label={

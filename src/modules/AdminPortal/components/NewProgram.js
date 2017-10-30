@@ -79,7 +79,7 @@ const createProgram_mapResultsToProps = ({ mutate, ownProps }) => {
                   first: 10
                 }
               });
-              console.log('readQuery allPrograms: ', allPrograms);
+
               proxy.writeQuery({
                 query: getProgramsQuery,
                 variables: {
@@ -116,11 +116,13 @@ const createProgramMutationConfig = {
 };
 
 const mapStateToProps = ({
-  createProgram: {
-    started: createStarted,
-    succeeded: createSucceeded,
-    errored: createErrored,
-    ended: createEnded
+  programs: {
+    create: {
+      started: createStarted,
+      succeeded: createSucceeded,
+      errored: createErrored,
+      ended: createEnded
+    }
   }
 }) => {
   return compactObject({

@@ -388,17 +388,19 @@ const deleteProgramMutationConfig = {
 // Mutation Lifecycles with Redux
 // ----------------------------------------
 const mapStateToProps = ({
-  updateProgram: {
-    started: updateStarted,
-    succeeded: updateSucceeded,
-    errored: updateErrored,
-    ended: updateEnded
-  },
-  deleteProgram: {
-    started: deleteStarted,
-    succeeded: deleteSucceeded,
-    errored: deleteErrored,
-    ended: deleteEnded
+  programs: {
+    update: {
+      started: updateStarted,
+      succeeded: updateSucceeded,
+      errored: updateErrored,
+      ended: updateEnded
+    },
+    delete: {
+      started: deleteStarted,
+      succeeded: deleteSucceeded,
+      errored: deleteErrored,
+      ended: deleteEnded
+    }
   }
 }) => {
   return compactObject({
