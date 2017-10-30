@@ -34,7 +34,7 @@ App features:
 - Lazy pagination using Apollo + GraphQL queries
 - Admin login portal
 - An admin dashboard with accessibility to live programs
-- Admins can perform authenticated CRUD operations in dashboard as well as approve
+- Admins can perform authenticated CRUD operations in dashboard as well as approve and disapprove submitted/pending programs
 - Public list directory for guest to search for a filter current programs
 - Guests can submit their programs to be listed
  and disapprove of submitted/pending programs [WIP]
