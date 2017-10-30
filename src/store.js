@@ -21,7 +21,7 @@ const apolloLink = createHttpLink({
   uri:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:4000/graphql'
-      : 'https://server-ivvvopzdti.now.sh/graphql'
+      : 'https://server-mqgjsyysqo.now.sh/graphql'
 });
 
 //

@@ -4,7 +4,7 @@
 
 This is a working full-stack React app demo (as well as a WIP) using the latest versions of GraphQL and Apollo 2.0
 
-> See the live version here: https://resource-manager-app-aussmfifmq.now.sh (if it takes a while to load, just give it a minute or two for the server to wake up)
+> See the live version here: https://resource-manager-app-ssjctonqih.now.sh (if it takes a while to load, just give it a minute or two for the server to wake up)
 
 The purpose of this app is to provide a local hub of queryable community ran programs that are maintained by service administrators.
 This is essentially a subset of an older [project](https://github.com/nnnoel/bounty_for_studyedge) with a focus on learning best practices with GraphQL + Apollo.
@@ -41,7 +41,7 @@ App features:
 
 This is purely for demonstration purposes
 
-An interactive GraphiQL instance can be accessed here: [https://server-ivvvopzdti.now.sh/graphiql](https://server-ivvvopzdti.now.sh/graphiql?query=query%20%7B%0A%20%20test%0A%7D)
+An interactive GraphiQL instance can be accessed here: [https://server-mqgjsyysqo.now.sh/graphiql](https://server-mqgjsyysqo.now.sh/graphiql?query=query%20%7B%0A%20%20test%0A%7D)
 
 To test
 ```

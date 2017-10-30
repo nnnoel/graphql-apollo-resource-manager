@@ -1,3 +1,4 @@
+// TODO: build process and optimization
 import './data/connectors';
 import express from 'express';
 import bodyParser from 'body-parser';
