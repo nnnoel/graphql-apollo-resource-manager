@@ -22,7 +22,7 @@ Tech Features:
 - JWT 8 for admin authentication
 - Redux 3.7
 - Redux persist 5
-- Redux thunk 2 for apollo mutation lifecycle hooks (Apollo does not provide network statuses for mutations, unlike queries)
+- Redux thunk 2 for apollo mutation lifecycle states (Apollo does not provide network statuses for mutations, unlike queries)
 - React Redux Form 1.15
 - Persisted data using a live MongoDB instance hosted by [mLab](https://mlab.com/welcome/)
 - [Grommet](https://github.com/grommet/grommet) 1.8 for UI components
