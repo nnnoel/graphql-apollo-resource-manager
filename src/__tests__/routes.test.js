@@ -1,32 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter, Router } from 'react-router';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router';
 import createMemoryHistory from 'history/createMemoryHistory';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
-import { mockNetworkInterface } from 'react-apollo/test-utils';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setupStore } from '../store';
 import { AdminRoute, GuestRoute } from '../routes';
-// FIXME since redux-persist v4 migration
+
 describe('Routes', () => {
   const node = document.createElement('div');
   const client = new ApolloClient({
-    networkInterface: mockNetworkInterface(
-      ...[
-        {
-          request: jest.fn(),
-          result: jest.fn()
-        }
-      ]
-    )
+    link: createHttpLink({ uri: 'test' }),
+    cache: new InMemoryCache()
   });
-  let store = setupStore(jest.fn());
-  let actual = null;
-  const Component = props => (actual = props) && null;
+  let { store } = setupStore();
+  const Component = () => null;
 
+  beforeEach(() => {
+    let { store: newStore } = setupStore();
+    store = newStore;
+  });
   afterEach(() => {
-    let actual = null;
-    store = setupStore(jest.fn());
     ReactDOM.unmountComponentAtNode(node);
   });
 
@@ -45,11 +42,13 @@ describe('Routes', () => {
       const history = createMemoryHistory({ initialEntries: [intendedPath] });
 
       ReactDOM.render(
-        <ApolloProvider client={client} store={store}>
-          <Router history={history}>
-            <AdminRoute path={intendedPath} component={Component} />
-          </Router>
-        </ApolloProvider>,
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Router history={history}>
+              <AdminRoute path={intendedPath} component={Component} />
+            </Router>
+          </ApolloProvider>
+        </Provider>,
         node
       );
 
@@ -62,11 +61,13 @@ describe('Routes', () => {
       const history = createMemoryHistory({ initialEntries: [intendedPath] });
 
       ReactDOM.render(
-        <ApolloProvider client={client} store={store}>
-          <Router history={history}>
-            <AdminRoute path={intendedPath} component={Component} />
-          </Router>
-        </ApolloProvider>,
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Router history={history}>
+              <AdminRoute path={intendedPath} component={Component} />
+            </Router>
+          </ApolloProvider>
+        </Provider>,
         node
       );
       expect(history.location.pathname).not.toEqual(intendedPath);
@@ -80,11 +81,13 @@ describe('Routes', () => {
 
     it('should render the exact path for guests', () => {
       ReactDOM.render(
-        <ApolloProvider client={client} store={store}>
-          <Router history={history}>
-            <GuestRoute exact path={intendedPath} component={Component} />
-          </Router>
-        </ApolloProvider>,
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Router history={history}>
+              <GuestRoute path={intendedPath} component={Component} />
+            </Router>
+          </ApolloProvider>
+        </Provider>,
         node
       );
       expect(history.location.pathname).not.toEqual('/admin/programs/list');
@@ -103,11 +106,13 @@ describe('Routes', () => {
       });
 
       ReactDOM.render(
-        <ApolloProvider client={client} store={store}>
-          <Router history={history}>
-            <GuestRoute exact path={intendedPath} component={Component} />
-          </Router>
-        </ApolloProvider>,
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Router history={history}>
+              <GuestRoute path={intendedPath} component={Component} />
+            </Router>
+          </ApolloProvider>
+        </Provider>,
         node
       );
       expect(history.location.pathname).not.toEqual(intendedPath);
